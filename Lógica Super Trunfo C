@@ -1,0 +1,102 @@
+#include <stdio.h>
+
+#define MAX_NOME_PAIS 50
+
+typedef struct {
+    char nome[MAX_NOME_PAIS];
+    unsigned long int populacao;
+    float area;
+    float pib;
+    int pontosTuristicos;
+    float densidadePopulacional;
+    float pibPerCapita;
+} Pais;
+
+void calcularAtributos(Pais *pais) {
+    pais->densidadePopulacional = (float)pais->populacao / pais->area;
+    pais->pibPerCapita = pais->pib * 1000000000 / pais->populacao;
+}
+
+void compararAtributos(Pais pais1, Pais pais2, int atributo1, int atributo2) {
+    float valor1Pais1, valor2Pais1, valor1Pais2, valor2Pais2;
+    float somaPais1, somaPais2;
+
+    switch (atributo1) {
+        case 1:
+            valor1Pais1 = (float)pais1.populacao;
+            valor1Pais2 = (float)pais2.populacao;
+            break;
+        case 2:
+            valor1Pais1 = pais1.area;
+            valor1Pais2 = pais2.area;
+            break;
+        case 3:
+            valor1Pais1 = pais1.pib;
+            valor1Pais2 = pais2.pib;
+            break;
+        case 4:
+            valor1Pais1 = (float)pais1.pontosTuristicos;
+            valor1Pais2 = (float)pais2.pontosTuristicos;
+            break;
+        case 5:
+            valor1Pais1 = pais1.densidadePopulacional;
+            valor1Pais2 = pais2.densidadePopulacional;
+            break;
+        case 6:
+            valor1Pais1 = pais1.pibPerCapita;
+            valor1Pais2 = pais2.pibPerCapita;
+            break;
+    }
+
+    switch (atributo2) {
+        case 1:
+            valor2Pais1 = (float)pais1.populacao;
+            valor2Pais2 = (float)pais2.populacao;
+            break;
+        case 2:
+            valor2Pais1 = pais1.area;
+            valor2Pais2 = pais2.area;
+            break;
+        case 3:
+            valor2Pais1 = pais1.pib;
+            valor2Pais2 = pais2.pib;
+            break;
+        case 4:
+            valor2Pais1 = (float)pais1.pontosTuristicos;
+            valor2Pais2 = (float)pais2.pontosTuristicos;
+            break;
+        case 5:
+            valor2Pais1 = pais1.densidadePopulacional;
+            valor2Pais2 = pais2.densidadePopulacional;
+            break;
+        case 6:
+            valor2Pais1 = pais1.pibPerCapita;
+            valor2Pais2 = pais2.pibPerCapita;
+            break;
+    }
+
+    somaPais1 = valor1Pais1 + valor2Pais1;
+    somaPais2 = valor1Pais2 + valor2Pais2;
+
+    printf("Comparação de Países:\n");
+    printf("País 1: %s\n", pais1.nome);
+    printf("País 2: %s\n", pais2.nome);
+    printf("Atributo 1: %d\n", atributo1);
+    printf("Atributo 2: %d\n", atributo2);
+    printf("Valor 1 do País 1: %.2f\n", valor1Pais1);
+    printf("Valor 2 do País 1: %.2f\n", valor2Pais1);
+    printf("Valor 1 do País 2: %.2f\n", valor1Pais2);
+    printf("Valor 2 do País 2: %.2f\n", valor2Pais2);
+    printf("Soma do País 1: %.2f\n", somaPais1);
+    printf("Soma do País 2: %.2f\n", somaPais2);
+
+    if (atributo1 == 5) {
+        printf("Resultado do Atributo 1: %s venceu\n", (valor1Pais1 < valor1Pais2) ? pais1.nome : pais2.nome);
+    } else {
+        printf("Resultado do Atributo 1: %s venceu\n", (valor1Pais1 > valor1Pais2) ? pais1.nome : pais2.nome);
+    }
+
+    if (atributo2 == 5) {
+        printf("Resultado do Atributo 2: %s venceu\n", (valor2Pais1 < valor2Pais2) ? pais1.nome : pais2.nome);
+    } else {
+        printf("Resultado do Atributo 2: %s venceu\n", (valor2
